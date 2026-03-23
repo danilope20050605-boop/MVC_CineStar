@@ -1,15 +1,12 @@
 ﻿// wwwroot/js/peliculas.js
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Determinar qué estamos cargando
     const idEstado = window.location.href.includes('cartelera') ? 1 : 2;
 
-    // 2. Hacer la petición a tu PeliculasApiController
     fetch(`/api/PeliculasApi/${idEstado}`)
         .then(res => res.json())
         .then(data => {
             let html = '';
             data.forEach(p => {
-                // Usamos los nombres de propiedades que devuelve tu DAO/Modelo
                 html += `
                     <div class="peli-item">
                         <br/>
