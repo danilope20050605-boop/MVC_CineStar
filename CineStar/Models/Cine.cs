@@ -3,11 +3,10 @@
     public class Cine
     {
         // Datos básicos
-        public int Id { get; set; } // Usar Mayúscula ayuda a que coincida con tus vistas
+        public int Id { get; set; } 
 
-        // Mantenemos Nombre para que tus archivos .cshtml no fallen
+        
         public string Nombre { get; set; }
-
         public string RazonSocial { get; set; }
         public int Salas { get; set; }
         public string Direccion { get; set; }
