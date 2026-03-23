@@ -7,14 +7,14 @@ namespace CineStar.Controllers
     {
         private CineDAO _cineDAO = new CineDAO();
 
-        // Ruta: /Cines (Lista completa - image_14.png)
+        
         public IActionResult Index()
         {
             var model = _cineDAO.ObtenerCines();
             return View(model);
         }
 
-        // Ruta: /Cines/Detalle/ID (image_15.png)
+        
         public IActionResult Detalle(int id)
         {
             var model = _cineDAO.ObtenerCineDetalle(id);
