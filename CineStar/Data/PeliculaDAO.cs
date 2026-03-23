@@ -7,7 +7,7 @@ namespace CineStar.Data
 {
     public class PeliculaDAO
     {
-        // Método 1: Para listar la cartelera (ya lo tienes)
+        
         public List<Pelicula> ObtenerPeliculasPorEstado(int idEstado)
         {
             List<Pelicula> lista = new List<Pelicula>();
@@ -42,8 +42,7 @@ namespace CineStar.Data
             return lista;
         }
 
-        // --- PEGA ESTE MÉTODO AQUÍ ---
-        // Método 2: Para el detalle de una sola película (Botón Más info)
+        
         public Pelicula ObtenerPelicula(int id)
         {
             Pelicula pelicula = null;
@@ -51,7 +50,7 @@ namespace CineStar.Data
             {
                 using (var cn = Conexion.Instancia.ObtenerConexion())
                 {
-                    // Usamos el Store Procedure que trae todos los datos extras
+                    
                     SqlCommand cmd = new SqlCommand("sp_getPelicula", cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", id);
