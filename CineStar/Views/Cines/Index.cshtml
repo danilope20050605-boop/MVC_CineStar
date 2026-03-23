@@ -1,0 +1,22 @@
+﻿@model IEnumerable<CineStar.Models.Cine>
+
+<div class="contenido-interno">
+    <br /><h1>Nuestros Cines</h1><br />
+
+    @foreach (var cine in Model)
+    {
+        <div class="contenido-cine">
+            <img src="~/img/cine/@(cine.Id).1.jpg" width="227" height="170" />
+            <br />
+            <div class="datos-cine">
+                <h4>@cine.Nombre</h4>
+                <p>@cine.Direccion - @cine.Distrito</p>
+                <p>Teléfono: @cine.Telefonos</p>
+            </div>
+            <br />
+            <a href="~/Cines/Detalle/@cine.Id">
+                <img src="~/img/varios/ico-info2.png" width="151" height="40" />
+            </a>
+        </div>
+    }
+</div>

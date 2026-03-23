@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CineStar.Models.Pelicula>
+
+<div class="contenido-interno">
+    <br /><h1>Próximos Estrenos</h1><br />
+
+    @foreach (var peli in Model)
+    {
+        <div class="contenido-peliculas">
+            <div class="datos-pelicula">
+                <h2>@peli.Titulo</h2><br />
+                <p>@peli.Sinopsis</p>
+                <br />
+                <div class="boton-pelicula">
+                    <a href="~/Peliculas/Detalle/@peli.Id">
+                        <img src="~/img/varios/btn-mas-info.jpg" width="120" height="30" alt="Más info">
+                    </a>
+                </div>
+                <div class="boton-pelicula">
+                    <a href="https://www.youtube.com/v/@peli.Link" target="_blank">
+                        <img src="~/img/varios/btn-trailer.jpg" width="120" height="30" alt="Ver trailer">
+                    </a>
+                </div>
+            </div>
+            <img src="~/img/pelicula/@(peli.Id).jpg" width="160" height="226" />
+        </div>
+    }
+</div>

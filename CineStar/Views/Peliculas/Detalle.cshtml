@@ -1,0 +1,35 @@
+﻿@model CineStar.Models.Pelicula
+
+<div class="contenido-interno">
+    <br /><h1>Cartelera</h1><br />
+    <div class="contenido-peliculas">
+        <div class="datos-pelicula">
+            <h2>@Model.Titulo</h2>
+            <p>@Model.Sinopsis</p><br />
+
+            <div class="tabla">
+                <div class="fila">
+                    <div class="celda-titulo">Título Original :</div>
+                    <div class="celda">@Model.Titulo</div>
+                </div>
+                <div class="fila">
+                    <div class="celda-titulo">Estreno :</div>
+                    <div class="celda">@Model.FechaEstreno</div>
+                </div>
+                <div class="fila">
+                    <div class="celda-titulo">Género :</div>
+                    <div class="celda">@Model.Generos</div>
+                </div>
+                <div class="fila">
+                    <div class="celda-titulo">Director :</div>
+                    <div class="celda">@Model.Director</div>
+                </div>
+                <div class="fila">
+                    <div class="celda-titulo">Reparto :</div>
+                    <div class="celda">@Model.Reparto</div>
+                </div>
+            </div>
+        </div>
+        <img src="~/img/pelicula/@(Model.Id).jpg" width="160" height="226" />
+    </div>
+</div>

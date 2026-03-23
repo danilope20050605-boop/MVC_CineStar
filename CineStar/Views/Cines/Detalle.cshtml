@@ -1,0 +1,72 @@
+﻿@model CineStar.Models.Cine
+
+<div class="contenido-interno" id="contenido-interno">
+    <h2>@Model.Nombre</h2>
+    <div class="cine-info">
+        <div class="cine-info datos">
+            <p>@Model.Direccion - @Model.Distrito</p>
+            <p>Teléfono: @Model.Telefonos</p>
+            <br />
+            <div class="tabla">
+                @{
+                    int i = 0;
+                    foreach (var tarifa in Model.ListaTarifas)
+                    {
+                        // La clase "impar" pone el fondo gris intercalado como en el original
+                        string claseFila = (i % 2 != 0) ? "fila impar" : "fila";
+                        <div class="@claseFila">
+                            <div class="celda-titulo">@tarifa.Dias</div>
+                            @* No ponemos "S/. " aquí porque tu SQL ya lo trae concatenado *@
+                            <div class="celda">@tarifa.Precio</div>
+                        </div>
+                        i++;
+                    }
+                }
+            </div>
+            <div class="aviso">
+                <p>A partir del 1ro de julio de 2016, Cinestar Multicines realizará el cobro de la comisión de S/. 1.00 adicional al tarifario vigente, a los usuarios que compren sus entradas por el aplicativo de Cine Papaya para Cine Star Comas, Excelsior, Las Américas, Benavides, Breña, San Juan, UNI, Aviación, Sur, Porteño, Tumbes y Tacna.</p>
+            </div>
+        </div>
+
+        @* Imagen lateral: Usamos la imagen .2 del cine *@
+        <img src="~/img/cine/@(Model.Id).2.jpg" />
+
+        <br /><br />
+        <h4>Los horarios de cada función están sujetos a cambios sin previo aviso.</h4>
+        <br />
+
+        <div class="cine-info peliculas">
+            <div class="tabla">
+                <div class="fila">
+                    <div class="celda-cabecera">Películas</div>
+                    <div class="celda-cabecera">Horarios</div>
+                </div>
+                @{
+                    int j = 0;
+                    foreach (var peli in Model.ListaPeliculas)
+                    {
+                        string claseFilaPeli = (j % 2 != 0) ? "fila impar" : "fila";
+                        <div class="@claseFilaPeli">
+                            <div class="celda-titulo">@peli.Titulo</div>
+                            <div class="celda">@peli.Horarios</div>
+                        </div>
+                        j++;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @* Imagen inferior: Usamos la imagen .3 del cine *@
+        <img style="float:left;" src="~/img/cine/@(Model.Id).3.jpg" alt="Imagen del cine" />
+        <span class="tx_gris">
+            Precios de los juegos: desde S/1.00 en todos los Cine Star.<br />
+            Horario de atención de juegos es de 12:00 m hasta las 10:30 pm.
+            <br /><br />
+            Visítanos y diviértete con nosotros.
+            <br /><br />
+            <b>CINESTAR</b>, siempre pensando en ti.
+        </span>
+    </div>
+</div>
