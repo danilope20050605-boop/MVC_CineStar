@@ -23,11 +23,9 @@ namespace CineStar.Data
                             lista.Add(new Cine
                             {
                                 Id = Convert.ToInt32(dr["id"]),
-                                // Se asigna RazonSocial al campo Nombre para la vista
                                 Nombre = dr["RazonSocial"].ToString().Trim(),
                                 Direccion = dr["Direccion"].ToString().Trim(),
                                 Telefonos = dr["Telefonos"].ToString().Trim(),
-                                // Se asigna Detalle (proveniente del JOIN con Distrito)
                                 Distrito = dr["Detalle"].ToString().Trim()
                             });
                         }
@@ -50,7 +48,6 @@ namespace CineStar.Data
                 {
                     cn.Open();
 
-                    // 1. LLAMADA PARA DATOS GENERALES (sp_getCine)
                     using (SqlCommand cmd = new SqlCommand("sp_getCine", cn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -74,11 +71,10 @@ namespace CineStar.Data
 
                     if (cine != null)
                     {
-                        // 2. LLAMADA PARA TARIFAS (sp_getCineTarifas)
                         using (SqlCommand cmdTarifas = new SqlCommand("sp_getCineTarifas", cn))
                         {
                             cmdTarifas.CommandType = CommandType.StoredProcedure;
-                            cmdTarifas.Parameters.AddWithValue("@idCine", id); // Nota: @idCine según tu SQL
+                            cmdTarifas.Parameters.AddWithValue("@idCine", id); 
                             using (var dr = cmdTarifas.ExecuteReader())
                             {
                                 while (dr.Read())
@@ -92,7 +88,6 @@ namespace CineStar.Data
                             }
                         }
 
-                        // 3. LLAMADA PARA PELÍCULAS (sp_getCinePeliculas)
                         using (SqlCommand cmdPelis = new SqlCommand("sp_getCinePeliculas", cn))
                         {
                             cmdPelis.CommandType = CommandType.StoredProcedure;
