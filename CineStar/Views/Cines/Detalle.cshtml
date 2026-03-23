@@ -12,7 +12,6 @@
                     int i = 0;
                     foreach (var tarifa in Model.ListaTarifas)
                     {
-                        // La clase "impar" pone el fondo gris intercalado como en el original
                         string claseFila = (i % 2 != 0) ? "fila impar" : "fila";
                         <div class="@claseFila">
                             <div class="celda-titulo">@tarifa.Dias</div>
