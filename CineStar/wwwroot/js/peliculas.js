@@ -1,4 +1,3 @@
-﻿// wwwroot/js/peliculas.js
 document.addEventListener('DOMContentLoaded', () => {
     const idEstado = window.location.href.includes('cartelera') ? 1 : 2;
 
